@@ -1,0 +1,22 @@
+{
+    "name": "pokeapi",
+    "version": "1.0.0",
+    "author": "Chuck Dascalos",
+    "description": "Package for the Gem City JS pokemon Angular 2 demo",
+    "scripts": {
+        "tsc": "tsc",
+        "tsc:w": "tsc -w",
+        "lint": "tslint ./app/**/*.ts -t verbose",
+        "typings": "typings",
+        "postinstall": "typings install"
+    },
+    "license": "ISC",
+    "dependencies": {
+    },
+    "devDependencies": {
+        "tslint": "^3.7.4",
+        "typescript": "^1.8.10",
+        "typings": "^0.7.12"
+    },
+    "repository": {}
+}
