@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="#pokemon of viewPokemons | async">
+    <a href="http://pokeapi.co/{{pokemon.resource_uri}}">{{pokemon.name}}</a>  
+  </li>
+</ul>
