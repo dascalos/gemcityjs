@@ -1,12 +1,9 @@
 import {Injectable} from 'angular2/core';
 import { Http, Response } from 'angular2/http';
 import { Observable } from 'rxjs/Rx';
+import { Pokemon } from './pokemon'
 
 //{"name": "doduo", "resource_uri": "api/v1/pokemon/84/"}
-
-export class Pokemon {
-	constructor(public name: string, public resource_uri: string) { }
-}
 
 @Injectable()
 export class PokemonService {

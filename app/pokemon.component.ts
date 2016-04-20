@@ -2,6 +2,7 @@ import { Component } from 'angular2/core';
 import { Observable } from 'rxjs/Rx';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { PokemonService } from './pokemon.service';
+import { Pokemon } from './pokemon'
 
 @Component({
   selector: 'my-pokemon',
@@ -20,7 +21,8 @@ export class PokemonComponent {
 	}
 	
 	getAllPokemon() {
-		this.viewPokemons = this._pokemonService.getPokedex();
+		this.allPokemons = this._pokemonService.getPokedex();
+		this.viewPokemons = this.allPokemons;
 	}
 	
 	loadFirstPage() {
