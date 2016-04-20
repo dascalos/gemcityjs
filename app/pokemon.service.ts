@@ -8,20 +8,20 @@ import { Pokemon } from './pokemon'
 @Injectable()
 export class PokemonService {
 	constructor(private _http: Http) { }
-	
+
   getPokedex() {
 	  return this._http.get('http://pokeapi.co/api/v1/pokedex/1/')
 	  .map((response: Response) => {
-		  let allPokemon = <Pokemon[]>response.json().pokemon.slice(0,19);
+		  let allPokemon = <Pokemon[]>response.json().pokemon.slice(0,99);
 		  return allPokemon;
 	  })
 	  .do(data => console.log(data))
 	  .catch(this.handleError);
   };
-  
+
   private handleError(error: Response) {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
-  }  
+  }
 }
 

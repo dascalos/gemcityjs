@@ -2,11 +2,13 @@
   <li *ngFor="#pokemon of viewPokemons | async">
     <div class="pokemon-summary">
         <span class="pokemon-image">
-          <img src='{{"http://pokeapi.co/media/img/" + pokemon.resource_uri.split("/")[3] + ".png"}}' alt='{{pokemon.name}}' />
+          <img src="{{'http://pokeapi.co/media/img/' + pokemon.resource_uri.split('/')[3] + '.png'}}" [alt]='pokemon.name' />
         </span>
         <h3 class="pokemon-name">
-          {{pokemon.name}}  
+          {{pokemon.name}}
         </h3>
-    </div>  
+    </div>
   </li>
 </ul>
+<button *ngIf="currentPage > 1" (click)='prev()'>Previous Page</button>
+<button (click)='next()'>Next Page</button>

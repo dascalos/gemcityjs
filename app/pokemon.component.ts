@@ -13,24 +13,37 @@ export class PokemonComponent {
 	errorMessage: string;
 	allPokemons: Pokemon[];
 	viewPokemons: Observable<Pokemon[]>;
+	currentPage: number = 1;
 	constructor(private _pokemonService: PokemonService) { }
-	
-	ngOnInit() { 
+
+	ngOnInit() {
 		this.getAllPokemon();
-		//this.loadFirstPage(); 
 	}
-	
+
 	getAllPokemon() {
 		this.allPokemons = this._pokemonService.getPokedex();
 		this.viewPokemons = this.allPokemons;
+		//this.loadPage(1);
 	}
-	
-	loadFirstPage() {
-		for (var z = 0; z < 20; z++) {
-			this.viewPokemons.push(this.allPokemons[z]);
-		}
+
+	loadPage(pageNumber: number) {
+		let viewPokemons = Observable.create(observer => {
+			for (var z = 0; z < 20; z++) {
+				var newPokemon = new Pokemon(this.allPokemons[z].name, this.allPokemons[z].resource_uri);
+				observer.next(newPokemon);
+			}
+		}).publish();
+		viewPokemons.connect();
 	}
-	
+
+	next(): void {
+		console.log("next");
+	}
+
+	prev(): void {
+		console.log("prev");
+	}
+
 }
 
 
