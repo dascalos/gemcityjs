@@ -11,7 +11,7 @@ import { Pokemon } from './pokemon'
 })
 export class PokemonComponent {
 	errorMessage: string;
-	allPokemons: Pokemon[];
+	allPokemons: Observable<Pokemon[]>;
 	viewPokemons: Observable<Pokemon[]>;
 	currentPage: number = 1;
 	constructor(private _pokemonService: PokemonService) { }
@@ -22,18 +22,11 @@ export class PokemonComponent {
 
 	getAllPokemon() {
 		this.allPokemons = this._pokemonService.getPokedex();
-		this.viewPokemons = this.allPokemons;
-		//this.loadPage(1);
+		this.loadPage(1);
 	}
 
 	loadPage(pageNumber: number) {
-		let viewPokemons = Observable.create(observer => {
-			for (var z = 0; z < 20; z++) {
-				var newPokemon = new Pokemon(this.allPokemons[z].name, this.allPokemons[z].resource_uri);
-				observer.next(newPokemon);
-			}
-		}).publish();
-		viewPokemons.connect();
+		//this.viewPokemons = this.allPokemons.filter
 	}
 
 	next(): void {

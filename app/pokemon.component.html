@@ -1,8 +1,8 @@
 <ul>
-  <li *ngFor="#pokemon of viewPokemons | async">
+  <li *ngFor="#pokemon of allPokemons | async">
     <div class="pokemon-summary">
         <span class="pokemon-image">
-          <img src="{{'http://pokeapi.co/media/img/' + pokemon.resource_uri.split('/')[3] + '.png'}}" [alt]='pokemon.name' />
+          <img src="{{pokemon.imageUrl()}}" [alt]="pokemon.name" />
         </span>
         <h3 class="pokemon-name">
           {{pokemon.name}}
