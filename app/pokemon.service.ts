@@ -11,16 +11,15 @@ export class PokemonService {
 
   getPokedex() {
 	  return this._http.get('http://pokeapi.co/api/v1/pokedex/1/')
-			.map((response: Response) => {
-				let rawpoke = response.json();
-		  return <Pokemon[]>response.json().pokemon;
-	  })
-	  .do(data => console.log(data))
-	  .catch(this.handleError);
+			.map((response: Response) => this.mapData(response.json().pokemon))
+	  	.do(data => console.log(data))
+			.catch(this.handleError);
   };
 
-	private mapData(data: any) {
-
+	mapData(data: any): Pokemon[] {
+		return data.array.forEach(element => {
+			
+		});
 	};
 
   private handleError(error: Response) {
