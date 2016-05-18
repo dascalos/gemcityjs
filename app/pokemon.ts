@@ -10,7 +10,7 @@ export class RawPoke implements IRawPoke {
 }
 
 export interface IPokemon {
-//	id: number;
+	id: number;
 	name: string;
 	resourceUri: string;
 	imageUrl: string;
@@ -18,7 +18,7 @@ export interface IPokemon {
 
 export class Pokemon implements IPokemon {
 	constructor(
-//		public id: number,
+		public id: number,
 		public name: string,
 		public resourceUri: string,
 		public imageUrl: string) { }

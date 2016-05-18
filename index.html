@@ -6,6 +6,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="pokechuck.css"></link>
+  <link rel="icon" href="/ivysaur.ico"></link>
 
   <!-- IE required polyfills, in this exact order -->
   <script src="node_modules/es6-shim/es6-shim.js"></script>
@@ -18,6 +19,8 @@
   <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
   <script src="node_modules/angular2/bundles/router.dev.js"></script>
   <script src="node_modules/angular2/bundles/http.dev.js"></script>
+  <!--<script src="node_modules/lodash/lodash.js"></script>-->
+  <!--<script src="node_modules/angular-2-local-storage/dist/angular-2-local-storage.js"></script>-->
 
   <script>
       System.config({
@@ -26,6 +29,10 @@
         packages: {
           'api': {defaultExtension: 'ts'},
           'app': {defaultExtension: 'ts'}
+        },
+        map: {
+          lodash: 'node_modules/lodash/lodash.js',
+//          'angular-2-local-storage': 'node_modules/angular-2-local-storage/dist/angular-2-local-storage.js'
         }
       });
     System.import('app/main')
