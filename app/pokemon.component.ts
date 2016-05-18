@@ -2,7 +2,7 @@ import { Component } from 'angular2/core';
 import { Observable } from 'rxjs/Rx';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { PokemonService } from './pokemon.service';
-import { Pokemon } from './pokemon'
+import { IPokemon, Pokemon, IRawPoke, RawPoke } from './pokemon'
 
 @Component({
   selector: 'my-pokemon',
@@ -11,8 +11,9 @@ import { Pokemon } from './pokemon'
 })
 export class PokemonComponent {
 	errorMessage: string;
-	allPokemons: Observable<Pokemon[]>;
-	viewPokemons: Observable<Pokemon[]>;
+	rawPokemons: IRawPoke[];
+	allPokemons: IPokemon[];
+	viewPokemons: IPokemon[];
 	currentPage: number = 1;
 	constructor(private _pokemonService: PokemonService) { }
 
@@ -21,8 +22,16 @@ export class PokemonComponent {
 	}
 
 	getAllPokemon() {
-		this.allPokemons = this._pokemonService.getPokedex();
+		this._pokemonService.getPokedex()
+			.subscribe(
+			z => this.rawPokemons = z,
+			error => this.errorMessage = <any>error);
+		console.log(this.rawPokemons);
 		this.loadPage(1);
+	}
+
+	sortPoke() {
+
 	}
 
 	loadPage(pageNumber: number) {
