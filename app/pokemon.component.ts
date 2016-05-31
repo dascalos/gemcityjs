@@ -4,7 +4,6 @@ import { HTTP_PROVIDERS } from 'angular2/http';
 import { PokemonService } from './pokemon.service';
 import { IPokemon, Pokemon, IRawPoke } from './pokemon';
 import _ from 'lodash';
-//import { LocalStorageService } from 'angular-2-local-storage/angular-2-local-storage';
 
 @Component({
   selector: 'my-pokemon',
@@ -18,22 +17,18 @@ export class PokemonComponent {
 	allPokemons: IPokemon[];
 	viewPokemons: IPokemon[];
 	currentPage: number = 1;
-	constructor(private _pokemonService: PokemonService,
-		//private _localStorageService: LocalStorageService
-	) { }
+	constructor(private _pokemonService: PokemonService) { }
 
 	ngOnInit() {
 		this.getAllPokemon();
 	}
 
 	getAllPokemon() {
-	//	this._localStorageService.set(this._favoritePokeKey, "1");
 		this._pokemonService.getPokedex()
 			.subscribe(
 			z => this.rawPokemons = z,
 			error => this.errorMessage = <any>error,
 			() => this.sortPoke());
-	//	console.log(this._localStorageService.get(this._favoritePokeKey));
 	}
 
 	sortPoke() {

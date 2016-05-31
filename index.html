@@ -19,8 +19,6 @@
   <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
   <script src="node_modules/angular2/bundles/router.dev.js"></script>
   <script src="node_modules/angular2/bundles/http.dev.js"></script>
-  <!--<script src="node_modules/lodash/lodash.js"></script>-->
-  <!--<script src="node_modules/angular-2-local-storage/dist/angular-2-local-storage.js"></script>-->
 
   <script>
       System.config({
@@ -31,8 +29,7 @@
           'app': {defaultExtension: 'ts'}
         },
         map: {
-          lodash: 'node_modules/lodash/lodash.js',
-//          'angular-2-local-storage': 'node_modules/angular-2-local-storage/dist/angular-2-local-storage.js'
+          lodash: 'node_modules/lodash/lodash.js'
         }
       });
     System.import('app/main')
