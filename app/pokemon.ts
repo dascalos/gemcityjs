@@ -14,6 +14,7 @@ export interface IPokemon {
 	name: string;
 	resourceUri: string;
 	imageUrl: string;
+	favorite: boolean;
 }
 
 export class Pokemon implements IPokemon {
@@ -21,5 +22,6 @@ export class Pokemon implements IPokemon {
 		public id: number,
 		public name: string,
 		public resourceUri: string,
-		public imageUrl: string) { }
+		public imageUrl: string,
+		public favorite: boolean) { }
 }

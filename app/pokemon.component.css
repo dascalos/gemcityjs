@@ -19,6 +19,18 @@ ul {
     margin: 1em;
 }
 
+.pokemon-summary.favorite {
+	background: wheat;
+}
+
+.favorite-star {
+	text-align: right;
+}
+
+.favorite-star img {
+	cursor: pointer;
+}
+
 .pokemon-image {
     order: 1;
     display: block;
@@ -43,4 +55,6 @@ ul {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: black;
 	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }

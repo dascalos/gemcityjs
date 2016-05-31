@@ -34,10 +34,15 @@ export class PokemonComponent {
 
 	sortPoke() {
 		this.allPokemons = [];
+		
+		// get a list of favorites
+		var favePokeArray = localStorage.getItem(this._favoritePokeKey);
+		let fpa: number[] = JSON.parse(favePokeArray ? favePokeArray : []);
+		
 		_.forEach(this.rawPokemons, (value) => {
 			var id = +value.resource_uri.split('/')[3];
 			if (id < 10000) {
-				var poke = new Pokemon(id, value.name, value.resource_uri, `http://pokeapi.co/media/img/${id}.png`);
+				var poke = new Pokemon(id, value.name, value.resource_uri, `http://pokeapi.co/media/img/${id}.png`, _.indexOf(fpa, id) !== -1);
 				this.allPokemons.push(poke);
 			}
 		});
@@ -56,6 +61,38 @@ export class PokemonComponent {
 
 	prev(): void {
 		console.log("prev");
+	}
+	
+	favorite(pokemon: Pokemon): void {
+		// pull int array from local storage
+		var favePokeArray = localStorage.getItem(this._favoritePokeKey);
+		
+		// localstorage cache miss
+		if (!favePokeArray) {
+			let tfpa: number[] = [];
+			tfpa.push(pokemon.id);
+			localStorage.setItem(this._favoritePokeKey, JSON.stringify(tfpa));
+			return;
+		}
+		
+		// convert from string to number[]
+		let fpa: number[] = JSON.parse(favePokeArray);
+		
+		// check if this item already is in local storage
+		let pokemonIndex: number = _.indexOf(fpa, pokemon.id);
+		if (pokemonIndex === -1) {
+			// add if not already in array
+			fpa.push(pokemon.id);
+			pokemon.favorite = true;
+		} else {
+			// remove if it is already favorite
+			fpa = _.remove(fpa, function(n) { return n !== pokemon.id });
+			pokemon.favorite = false;
+		}
+		
+		// write back to local storage
+		localStorage.setItem(this._favoritePokeKey, JSON.stringify(fpa));
+		// update UI
 	}
 
 }
