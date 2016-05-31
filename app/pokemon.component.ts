@@ -8,6 +8,7 @@ import _ from 'lodash';
 @Component({
   selector: 'my-pokemon',
   templateUrl: 'app/pokemon.component.html',
+  styleUrls: ['app/pokemon.component.css'],
   providers: [HTTP_PROVIDERS, PokemonService]
 })
 export class PokemonComponent {
