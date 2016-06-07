@@ -22,6 +22,8 @@ export class PokemonComponent implements OnInit {
 	allPokemons: IPokemon[];
 	viewPokemons: IPokemon[];
 	currentPage: number = 1;
+	favoritesOnly: boolean=false;
+
 	constructor(
 		private _router: Router,
 		private _pokemonService: PokemonService) { }
@@ -48,7 +50,11 @@ export class PokemonComponent implements OnInit {
 		_.forEach(this.rawPokemons, (value) => {
 			var id = +value.resource_uri.split('/')[3];
 			if (id < 10000) {
-				var poke = new Pokemon(id, value.name, value.resource_uri, `http://pokeapi.co/media/img/${id}.png`, _.indexOf(fpa, id) !== -1);
+				var poke = new Pokemon(id, 
+					value.name, 
+					value.resource_uri, 
+					`http://pokeapi.co/media/img/${id}.png`, 
+					_.indexOf(fpa, id) !== -1);
 				this.allPokemons.push(poke);
 			}
 		});

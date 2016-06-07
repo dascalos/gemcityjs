@@ -23,6 +23,10 @@ ul {
 	background: wheat;
 }
 
+.pokemon-summary.hidden {
+    display: none;
+}
+
 .favorite-star {
 	text-align: right;
 }

@@ -26,5 +26,5 @@ import { PokedeetsService } from './pokedeets.service';
 	}
 ])
 export class AppComponent {
-	title = "Angular 2 Demo";
+	title = "Gem City JavaScript";
 }

@@ -1,6 +1,7 @@
+<input type="checkbox" [(ngModel)]="favoritesOnly">Favorites Only
 <ul>
   <li *ngFor="#pokemon of viewPokemons">
-    <div class="pokemon-summary" [class.favorite]="pokemon.favorite">
+    <div class="pokemon-summary" [class.favorite]="pokemon.favorite" [class.hidden]="favoritesOnly && !pokemon.favorite">
         <span class="favorite-star">
           <img src="favorite.png" alt="favorite" (click)="favorite(pokemon)" />
         </span>
