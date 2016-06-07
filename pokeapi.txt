@@ -1,3 +1,4 @@
 http://pokeapi.co/api/v1/pokedex/1/
 http://pokeapi.co/api/v1/pokemon/79/
 http://pokeapi.co/media/img/79.png
+http://pokeapi.co/api/v2/pokemon/1/

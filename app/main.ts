@@ -1,8 +1,9 @@
 import { bootstrap } from 'angular2/platform/browser';
 import { Provider, provide } from 'angular2/core';
-import { PokemonComponent } from './pokemon.component';
+import { AppComponent } from './app.component';
 
-bootstrap(PokemonComponent)
+
+bootstrap(AppComponent)
   .then(success => console.log(`Bootstrap success`))
   .catch(error => console.log(error));
 

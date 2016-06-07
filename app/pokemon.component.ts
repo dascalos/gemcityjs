@@ -1,24 +1,30 @@
-import { Component } from 'angular2/core';
+import { Component, OnInit } from 'angular2/core';
+import { Router, ROUTER_DIRECTIVES } from 'angular2/router';
 import { Observable } from 'rxjs/Rx';
 import { HTTP_PROVIDERS } from 'angular2/http';
+
+import { PokedeetsComponent } from './pokedeets.component';
 import { PokemonService } from './pokemon.service';
 import { IPokemon, Pokemon, IRawPoke } from './pokemon';
 import _ from 'lodash';
 
 @Component({
-  selector: 'my-pokemon',
+  selector: 'pokedex',
   templateUrl: 'app/pokemon.component.html',
   styleUrls: ['app/pokemon.component.css'],
+  directives: [ROUTER_DIRECTIVES],
   providers: [HTTP_PROVIDERS, PokemonService]
 })
-export class PokemonComponent {
+export class PokemonComponent implements OnInit {
 	private _favoritePokeKey = "favepoke";
 	errorMessage: string;
 	rawPokemons: IRawPoke[];
 	allPokemons: IPokemon[];
 	viewPokemons: IPokemon[];
 	currentPage: number = 1;
-	constructor(private _pokemonService: PokemonService) { }
+	constructor(
+		private _router: Router,
+		private _pokemonService: PokemonService) { }
 
 	ngOnInit() {
 		this.getAllPokemon();
@@ -72,6 +78,7 @@ export class PokemonComponent {
 			let tfpa: number[] = [];
 			tfpa.push(pokemon.id);
 			localStorage.setItem(this._favoritePokeKey, JSON.stringify(tfpa));
+			pokemon.favorite = true;
 			return;
 		}
 		
@@ -94,7 +101,6 @@ export class PokemonComponent {
 		localStorage.setItem(this._favoritePokeKey, JSON.stringify(fpa));
 		// update UI
 	}
-
 }
 
 
